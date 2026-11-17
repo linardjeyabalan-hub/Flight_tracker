@@ -16,22 +16,36 @@ baggage:
 
 # Use multi-city legs (maps to SerpApi's `multi_city_json`)
 segments:
-
   - name: "IST-CMB"
-    type: 2 # 1 = Round trip, 2 = One way, 3 = Multi-city
+    type: 2
     date: "2027-04-17"
     departure_id: IST
     arrival_id: CMB
-    # Optional post-filter fields (SerpApi filters by airline code, not flight number)
     include_airlines: TK
     target_flight_number: "TK 1130"
 
   - name: "CMB-HEL"
-    type: 2 # 1 = Round trip, 2 = One way, 3 = Multi-city
+    type: 2
     date: "2027-06-15"
     departure_id: CMB
     arrival_id: HEL
-    include_airlines: TK # Example: replace with your preferred airline code
-    target_flight_number: 
-      - "TK 1131" 
-      - "TK 1763" # Replace with your target flight
+    include_airlines: TK
+    target_flight_number:
+      - "TK 1131"
+      - "TK 1763"
+
+  - name: "IST-CMB-HEL (Multi-City)"
+    type: 3
+    include_airlines: TK
+    legs:
+      - date: "2027-04-17"
+        departure_id: IST
+        arrival_id: CMB
+        target_flight_number: "TK 1130"
+      - date: "2027-06-15"
+        departure_id: CMB
+        arrival_id: HEL
+        target_flight_number:
+          - "TK 1131"
+          - "TK 1763"
+
