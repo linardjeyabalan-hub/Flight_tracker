@@ -49,7 +49,7 @@ def main():
 
     provider = GoogleFlightsProvider()
 
-    for option in config["options"]:
+    for option in config["segments"]:
 
         print(f"Processing {option['name']}")
 

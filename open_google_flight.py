@@ -105,7 +105,12 @@ with sync_playwright() as p:
     page.get_by_role(
         "button",
         name="Done"
-    ).click()
+    ).click(timeout=2000)
+
+    page.keyboard.press(
+        "Escape"
+        )
+    page.wait_for_timeout(1000)
 
     print("Executing search...")
 

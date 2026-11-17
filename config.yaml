@@ -1,34 +1,37 @@
+search_config:
+  engine: google_flights
+  currency: CHF # Optional: USD, EUR, CHF, etc.
+  hl: en # Interface language
+
 travelers:
   adults: 2
-  children: 3
+  children: 3 # Ages 2-11 (add infants_in_seat / infants_on_lap if under 2)
 
 baggage:
-  checked_bag: true
-  weight: 23
+  # Note: SerpApi's `bags` parameter ONLY counts carry-on bags (max 1 per passenger).
+  # Checked bags and weight (23kg) cannot be filtered in the request;
+  # you must check `extensions` or `baggage_prices` in the API response.
+  carry_on_bags: 5
+  exclude_basic_economy: true # Helpful to avoid fares without checked bags
 
-options:
+# Use multi-city legs (maps to SerpApi's `multi_city_json`)
+segments:
 
-  - name: IST-CMB
-    segments:
-      - date: 2027-04-17
-        from: IST
-        to: CMB
-        flight: TK1130
+  - name: "IST-CMB"
+    type: 2 # 1 = Round trip, 2 = One way, 3 = Multi-city
+    date: "2027-04-17"
+    departure_id: IST
+    arrival_id: CMB
+    # Optional post-filter fields (SerpApi filters by airline code, not flight number)
+    include_airlines: TK
+    target_flight_number: "TK 1130"
 
-  - name: CMB-HEL
-    segments:
-      - date: 2027-06-15
-        from: CMB
-        to: HEL
-        fligt:
-
-  - name: IST-CMB-HEL
-    segments:
-      - date_arrival: 2027-04-17
-        from: IST
-        to: CMB
-        flight:
-      - date_return: 2027-06-15
-        from: CMB
-        to: HEL
-        flight: 
+  - name: "CMB-HEL"
+    type: 2 # 1 = Round trip, 2 = One way, 3 = Multi-city
+    date: "2027-06-15"
+    departure_id: CMB
+    arrival_id: HEL
+    include_airlines: TK # Example: replace with your preferred airline code
+    target_flight_number: 
+      - "TK 1131" 
+      - "TK 1763" # Replace with your target flight
