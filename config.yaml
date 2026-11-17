@@ -1,0 +1,31 @@
+travelers:
+  adults: 2
+  children: 3
+
+baggage:
+  checked_bag: true
+  weight: 23
+
+options:
+
+  - name: IST-CMB
+    segments:
+      - date: 2027-04-17
+        from: IST
+        to: CMB
+        flight: TK1130
+
+  - name: CMB-HEL
+    segments:
+      - date: 2027-06-15
+        from: CMB
+        to: HEL
+
+  - name: IST-CMB-HEL
+    segments:
+      - date_arrival: 2027-04-17
+        from: IST
+        to: CMB
+      - date_return: 2027-06-15
+        from: CMB
+        to: HEL
