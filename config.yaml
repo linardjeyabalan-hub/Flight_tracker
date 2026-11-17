@@ -20,12 +20,15 @@ options:
       - date: 2027-06-15
         from: CMB
         to: HEL
+        fligt:
 
   - name: IST-CMB-HEL
     segments:
       - date_arrival: 2027-04-17
         from: IST
         to: CMB
+        flight:
       - date_return: 2027-06-15
         from: CMB
         to: HEL
+        flight: 
