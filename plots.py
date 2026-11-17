@@ -89,6 +89,6 @@ fig.update_yaxes(title_text="Leg Price (CHF)", row=2, col=1)
 
 # 4. Save to standalone HTML and open in browser
 output_file = os.path.abspath("price_trends.html")
-fig.write_html(output_file)
+fig.write_html(output_file, include_plotlyjs="cdn")
 print(f"Chart saved to {output_file}")
 webbrowser.open(f"file://{output_file}")
