@@ -176,7 +176,7 @@ def save_price(run_id, option_name, flight_data):
 
 
 def main():
-    api_key = os.environ.get("SERPAPI_KEY", "a30b91f2a2448fb06a0a6778f92d2a9db971ca82d8eae4e748ac42cf927c9407")
+    api_key = os.environ.get("SERPAPI_KEY")
     config = load_config()
     currency = config.get("search_config", {}).get("currency", "CHF")
 
